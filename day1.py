@@ -1,6 +1,4 @@
-#!/usr/bin/env python3
-if __name__ == '__main__':
-    with open('day1input.txt','r') as f: 
-        sizes = [sum([int(y) for y in x.split('\n') if y != '']) for x in f.read().split('\n\n')]
-        sizes.sort()
-        print(f'P1:{sizes[-1]}-P2:{sizes[-3]+sizes[-2]+sizes[-1]}')
+with open('day1input.txt','r') as f: 
+ s = [sum([int(y) for y in x.split('\n') if y]) for x in f.read().split('\n\n')]
+ s.sort()
+ print(f'P1:{s[-1]}-P2:{s[-3]+s[-2]+s[-1]}')
