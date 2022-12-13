@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 
-from collections import deque
 from dataclasses import dataclass
-import pdb
 from queue import Queue
 
 file = 'day12input.txt'
@@ -36,6 +34,7 @@ def build_maze(maze: list[list[int]],start: tuple[int,int], end: tuple[int,int],
                 return next_weight, weights
             if maze[new_square[1]][new_square[0]] == 1:
                 weights.add(next_weight)
+                continue
             seen.add(new_square)
             queue.put(pnt(new_square,next_weight,tuple([i * -1 for i in dir])))
 
@@ -53,7 +52,6 @@ if __name__ == '__main__':
             elif c == -27: end = (i,j);map[j][i]=27
     
     #Do the maze!
-    size = len(map)*len(map[0])
     lastweight, weights = build_maze(map,start,end,len(map[0]),len(map))
     print(f'P1: {lastweight}')
     print(f'P2: {min(weights)}')
